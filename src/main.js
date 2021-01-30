@@ -20,7 +20,7 @@ async function onLoad() {
     counter = document.querySelector("#counter");
     viewSection = document.querySelector("#view-section");
     todoList = await getPersistent(DB_NAME);
-    if(!todoList) todoList = [];
+    if (!todoList) todoList = [];
     renderList();
 
     //UI elements events
@@ -46,7 +46,7 @@ async function onLoad() {
 
     //delete Button
     clearButton.onclick = event => {
-        if(!confirm("Are you sure?")) return;
+        if ( !confirm("Are you sure?") ) return;
         const selectedElements = viewSection.querySelectorAll(".selected");
         if (selectedElements.length > 0) {
             event.preventDefault();
