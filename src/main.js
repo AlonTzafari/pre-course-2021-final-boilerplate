@@ -48,7 +48,6 @@ async function onLoad() {
     clearButton.onclick = event => {
         if(!confirm("Are you sure?")) return;
         const selectedElements = viewSection.querySelectorAll(".selected");
-        console.log(selectedElements);
         if (selectedElements.length > 0) {
             event.preventDefault();
             for (const element of selectedElements) {
@@ -105,9 +104,7 @@ async function onLoad() {
         } else {
             checkbox.parentNode.classList.remove("checked-task");
         }
-    });
-
-    
+    }); 
 }
 
 //helper functions
@@ -142,7 +139,7 @@ function createTodoElement(todo) {
     todoPriority.innerText = todo.priority;
     timeStamp.innerText = dateToSQLFormat( new Date(todo.date) );
     todoText.innerText = todo.text;
-    todoEdit.innerHTML = `<i class="fa fa-pencil" aria-hidden="true"></i>`;
+    todoEdit.innerHTML = `<i class="fa fa-pencil" aria-hidden="true"></i>`; //awesome fonts
     todoEdit.onclick = createEditPrompt;
     container.append(todoCheck, todoPriority, timeStamp, todoText, todoEdit);
     return container;
