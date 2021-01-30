@@ -40,12 +40,16 @@ main {
 /* control section style */
 #control-section {
     display: flex;
-    align-items: stretch;
-    height: 30px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: 100%;
+    min-height: 30px;
     justify-content: space-between;
     border-bottom: 3px solid var(--text);
     padding-bottom: 1%;
     margin-bottom: 3%;
+    transition: 1000ms all;
 }
 
 #loading {
@@ -68,6 +72,8 @@ main {
     color: var(--text);
 }
 
+
+
 .control-element:focus {
     outline: unset;
 }
@@ -79,6 +85,12 @@ main {
 .adder {
     display: flex;
     justify-content: flex-start;
+}
+
+.control-utils {
+    margin-top: 1%;
+    display: flex;
+    width: fit-content;
 }
 
 button {
@@ -136,6 +148,12 @@ button:active {
     padding-bottom: 0.3em;
     padding-left: 0.3em; 
     transition: 200ms all;
+}
+
+@media (max-width: 600px) {
+    .todo-container {
+        font-size: 10px;
+    }
 }
 
 .checked-task {
