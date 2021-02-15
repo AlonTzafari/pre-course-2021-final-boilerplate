@@ -19,9 +19,12 @@ async function onLoad() {
     clearButton = document.querySelector("#clear-button");
     counter = document.querySelector("#counter");
     viewSection = document.querySelector("#view-section");
-    todoList = await getPersistent(DB_NAME);
-    if (!todoList) todoList = [];
-    renderList();
+    
+    getPersistent(DB_NAME).then(data => {
+        todoList = data;
+        if (!todoList) todoList = [];
+        renderList();
+    });
 
     //UI elements events
     //add list entry

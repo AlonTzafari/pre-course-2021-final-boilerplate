@@ -3,7 +3,7 @@ const DB_NAME = "my-todo";
 const DB_URL = "https://api.jsonbin.io/v3/b/6011dbcf9f55707f6dfcf2b7";
 
 // Gets data from persistent storage by the given key and returns it
-async function getPersistent(key) { 
+function getPersistent(key) { 
   const init = {
     method: "GET",
     headers: {
@@ -25,7 +25,7 @@ async function getPersistent(key) {
 
 // Saves the given data into persistent storage by the given key.
 // Returns 'true' on success.
-async function setPersistent(key, data) {
+function setPersistent(key, data) {
   const sendObject = {};
   sendObject[key] = data;
   if(data.length === 0) sendObject[key] = null;
