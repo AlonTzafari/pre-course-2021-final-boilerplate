@@ -10,7 +10,7 @@ let viewSection;
 let todoList;
 
 document.addEventListener("DOMContentLoaded", onLoad);
-async function onLoad() {
+function onLoad() {
     //setup
     textInput = document.querySelector("#text-input");
     prioritySelector = document.querySelector("#priority-selector");
@@ -28,7 +28,7 @@ async function onLoad() {
 
     //UI elements events
     //add list entry
-    addButton.onclick = async () => {
+    addButton.onclick = () => {
         const todo = {
             checked: false,
             text: textInput.value,
