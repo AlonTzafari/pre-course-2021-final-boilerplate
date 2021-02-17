@@ -35,7 +35,7 @@ function getAll() {
     const bins = [];
     for(const binName of binNames) {
         const rawJson = fs.readFileSync(`${__dirname}/database/bins/${binName}`, "utf8");
-        bins.push(rawJson);
+        bins.push( JSON.parse(rawJson) );
     }
     return bins;
 }

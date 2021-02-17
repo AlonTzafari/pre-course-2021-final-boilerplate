@@ -7,8 +7,9 @@ const bin = express();
 
 //get all
 bin.get("/", (request, response) => {
-    console.log( getAll() );
-    response.send("getAll()");
+    const allJsons = getAll(); 
+    console.log(`sending: ${allJsons}`);
+    response.send(allJsons);
 });
 //get
 bin.get("/:id", (request, response) => {
