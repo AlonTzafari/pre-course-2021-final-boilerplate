@@ -34,7 +34,13 @@ bin.post("/", (request, response) => {
 //update
 bin.put("/:id", (request, response) => {
     const id = request.params.id;
-    response.send(`bin ${id} updated`);
+    try {
+        updateBin(id, request.body);
+        response.send(`bin ${id} updated`);
+    } catch (error) {
+        response.send("" + error);
+
+    }
 });
 //delete
 bin.delete("/:id", (request, response) => {

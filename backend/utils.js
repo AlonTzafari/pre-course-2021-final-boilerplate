@@ -41,8 +41,12 @@ function getAll() {
     return bins;
 }
 
-function updateBin(id) {
-
+function updateBin(id, data) {
+    const binNames = fs.readdirSync(`${__dirname}/database/bins`);
+    if( !binNames.includes(`${id}.json`) ) throw new Error(`Bin ${id}.json doesn't exist`);
+    const content = JSON.stringify(data);
+    fs.writeFileSync(`${__dirname}/database/bins/${id}.json`, content);
+    return id;
 }
 
 function deleteBin(id) {
