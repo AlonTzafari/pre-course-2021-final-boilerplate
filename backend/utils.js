@@ -1,5 +1,6 @@
 "use strict"
 
+const { json } = require("express");
 const fs = require("fs");
 
 function randomId(length) {
@@ -20,7 +21,7 @@ function createBin(data) {
     }
     
     const content = JSON.stringify(data);
-    fs.appendFileSync(`${__dirname}/database/bins/${id}.json`, content);
+    fs.writeFileSync(`${__dirname}/database/bins/${id}.json`, content);
     return id;
 }
 
@@ -29,10 +30,11 @@ function getBin(id) {
 }
 
 function getAll() {
-    const binNames = fs.readdirSync(`${__dirname}/database/bins`);
+    const files = fs.readdirSync(`${__dirname}/database/bins`);
+    const binNames = files.filter(name => name.split(".")[1] === "json"); //filter all non json file names
     const bins = [];
     for(const binName of binNames) {
-        const rawJson = fs.readFileSync(`${__dirname}/database/bins/${binName}`);
+        const rawJson = fs.readFileSync(`${__dirname}/database/bins/${binName}`, "utf8");
         bins.push(rawJson);
     }
     return bins;
