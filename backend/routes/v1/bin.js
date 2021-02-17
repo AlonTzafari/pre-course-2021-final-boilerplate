@@ -66,10 +66,9 @@ bin.put("/:id", (request, response) => {
               "parentId": id,
               "private": false
             }
-          });
+        });
     } catch (error) {
         response.status(404).send({"message": `${error}`});
-
     }
 });
 
@@ -78,12 +77,20 @@ bin.delete("/:id", (request, response) => {
     const id = request.params.id;
     try {
         deleteBin(id);
-        response.send(`bin ${id} deleted`);
+        response.send({
+            "metadata": {
+              "id": id,
+              "versionsDeleted": 0
+            },
+            "message": "Bin deleted successfully"
+          });
     } catch(error) {
-        response.send(`bin ${id} not found`);
+        response.status(404).send({"message": "Bin not found"});
     }
 });
 
+function formatResponse(record, id, type) {
 
+}
 
 module.exports = bin;
