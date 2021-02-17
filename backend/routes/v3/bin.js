@@ -89,7 +89,7 @@ bin.delete("/:id", (request, response) => {
     }
 });
 
-function formatResponse(record, id, type) {
+function formatResponse(record) {
 
 }
 
