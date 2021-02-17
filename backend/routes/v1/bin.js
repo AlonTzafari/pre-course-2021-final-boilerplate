@@ -11,6 +11,7 @@ bin.get("/", (request, response) => {
     console.log(`sending: ${allJsons}`);
     response.send(allJsons);
 });
+
 //get
 bin.get("/:id", (request, response) => {
     const id = request.params.id;
@@ -18,12 +19,21 @@ bin.get("/:id", (request, response) => {
     const bin = getBin(id);
     console.log(`sending bin ${id}.json`);
     console.log(bin);
-    response.send(bin);
-} catch(error) {
-    console.log("error: " + error);
-    response.send(`bin ${id} not found`);
+    response.status(200).send({
+        "record": bin,
+        "metadata": {
+          "id": id,
+          "private": false
+        }
+    });
+    } catch(error) {
+        console.log("error: " + error);
+        response.status(404).send({
+            "message": "Bin not found"
+        });
     }
 });
+
 //create
 bin.post("/", (request, response) => {
     console.log("post received");
@@ -31,6 +41,7 @@ bin.post("/", (request, response) => {
     console.log(`bin ${id}.json created`);
     response.send(`new bin ${id} created`);
 });
+
 //update
 bin.put("/:id", (request, response) => {
     const id = request.params.id;
@@ -42,6 +53,7 @@ bin.put("/:id", (request, response) => {
 
     }
 });
+
 //delete
 bin.delete("/:id", (request, response) => {
     const id = request.params.id;
