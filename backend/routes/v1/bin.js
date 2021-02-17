@@ -60,9 +60,15 @@ bin.put("/:id", (request, response) => {
     const id = request.params.id;
     try {
         updateBin(id, request.body);
-        response.send(`bin ${id} updated`);
+        response.status(200).send({
+            "record": request.body,
+            "metadata": {
+              "parentId": id,
+              "private": false
+            }
+          });
     } catch (error) {
-        response.send("" + error);
+        response.status(404).send({"message": `${error}`});
 
     }
 });
