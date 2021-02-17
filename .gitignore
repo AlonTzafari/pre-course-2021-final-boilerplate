@@ -1,7 +1,7 @@
 node_modules
-
-bins/*
-
-# !.gitkeep
+backend/database/bins/*
+!backend/database/bins/.gitkeep
+backend/database/collections/*
+!backend/database/collections/.gitkeep
 
 
