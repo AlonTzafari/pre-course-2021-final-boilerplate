@@ -14,7 +14,15 @@ bin.get("/", (request, response) => {
 //get
 bin.get("/:id", (request, response) => {
     const id = request.params.id;
-    response.send(`bin ${id}`);
+    try {
+    const bin = getBin(id);
+    console.log(`sending bin ${id}.json`);
+    console.log(bin);
+    response.send(bin);
+} catch(error) {
+    console.log("error: " + error);
+    response.send(`bin ${id} not found`);
+    }
 });
 //create
 bin.post("/", (request, response) => {

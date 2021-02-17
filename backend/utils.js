@@ -26,7 +26,8 @@ function createBin(data) {
 }
 
 function getBin(id) {
-    
+    const rawJson = fs.readFileSync(`${__dirname}/database/bins/${id}.json`, "utf8");
+    return JSON.parse(rawJson);
 }
 
 function getAll() {
