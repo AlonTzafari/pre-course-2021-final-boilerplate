@@ -1,7 +1,7 @@
 "use strict"
 const express = require("express");
 const fs = require("fs");
-const {createBin} = require("../../utils");
+const {createBin, getBin, getAll, updateBin, deleteBin} = require("../../utils");
 
 const bin = express();
 

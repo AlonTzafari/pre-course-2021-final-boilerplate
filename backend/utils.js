@@ -28,6 +28,22 @@ function getBin(id) {
     
 }
 
+function getAll() {
+
+}
+
+function updateBin(id) {
+
+}
+
+function deleteBin(id) {
+
+}
+
 module.exports = {
-    createBin
+    createBin,
+    getBin,
+    getAll,
+    updateBin,
+    deleteBin
 }
