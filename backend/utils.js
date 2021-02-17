@@ -15,7 +15,7 @@ function randomId(length) {
 function createBin(data) {
     const binNames = fs.readdirSync(`${__dirname}/database/bins`);
     let id = randomId(8);
-    while (binNames.indexOf(`${id}.json`) === -1) {
+    while (binNames.includes(`${id}.json`)) {
         id = randomId(8);
     }
     
@@ -29,7 +29,13 @@ function getBin(id) {
 }
 
 function getAll() {
-
+    const binNames = fs.readdirSync(`${__dirname}/database/bins`);
+    const bins = [];
+    for(const binName of binNames) {
+        const rawJson = fs.readFileSync(`${__dirname}/database/bins/${binName}`);
+        bins.push(rawJson);
+    }
+    return bins;
 }
 
 function updateBin(id) {

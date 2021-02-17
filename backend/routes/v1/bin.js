@@ -7,7 +7,8 @@ const bin = express();
 
 //get all
 bin.get("/", (request, response) => {
-    response.send("all bins");
+    console.log( getAll() );
+    response.send("getAll()");
 });
 //get
 bin.get("/:id", (request, response) => {
@@ -16,7 +17,9 @@ bin.get("/:id", (request, response) => {
 });
 //create
 bin.post("/", (request, response) => {
+    console.log("post received");
     const id = createBin(request.body);
+    console.log(`bin ${id}.json created`);
     response.send(`new bin ${id} created`);
 });
 //update
