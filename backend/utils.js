@@ -13,11 +13,16 @@ function randomId(length) {
     return result;
  }
 
-function createBin(data) {
+function createBin(data, binName = null) {
     const binNames = fs.readdirSync(`${__dirname}/database/bins`);
-    let id = randomId(8);
-    while (binNames.includes(`${id}.json`)) {
+    let id = binName;
+    if (id) {
+        if ( binNames.includes(`${id}.json`) ) throw new Error("Bin name taken");
+    } else {
         id = randomId(8);
+        while ( binNames.includes(`${id}.json`) ) {
+            id = randomId(8);
+        }
     }
     
     const content = JSON.stringify(data);

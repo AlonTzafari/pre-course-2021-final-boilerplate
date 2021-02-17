@@ -36,10 +36,23 @@ bin.get("/:id", (request, response) => {
 
 //create
 bin.post("/", (request, response) => {
-    console.log("post received");
-    const id = createBin(request.body);
-    console.log(`bin ${id}.json created`);
-    response.send(`new bin ${id} created`);
+    const binName = request.header("X-BIN-NAME");
+    let id = null;
+    if (binName) id = binName;
+    try {
+        id = createBin(request.body, id);
+        console.log(`bin ${id}.json created`);
+        response.status(200).send({
+            "record": request.body,
+            "metadata": {
+              "id": id,
+              "createdAt": new Date().toISOString(),
+              "private": false
+            }
+        });
+    } catch (error) {
+        response.status(400).send({"message": `${error}`});
+    }
 });
 
 //update
