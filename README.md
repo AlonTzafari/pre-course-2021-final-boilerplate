@@ -39,5 +39,18 @@ Heres a link to the [GitHub Page](https://alontzafari.github.io/pre-course-2021-
 - General responsivity in style and UI. (elements pop, buttons are pressed)
 
 
+## backend:
 
+### bins:
 
+- GET api/v3/b
+
+- GET api/v3/b/<BIN_ID> 
+
+- POST api/v3/b  headers: Content-Type, X-BIN-NAME (optional) 
+
+- PUT api/v3/b/<BIN_ID>  headers: Content-Type 
+
+- DELETE api/v3/b/<BIN_ID>  
+
+### collections:

@@ -89,8 +89,6 @@ bin.delete("/:id", (request, response) => {
     }
 });
 
-function formatResponse(record) {
 
-}
 
 module.exports = bin;
