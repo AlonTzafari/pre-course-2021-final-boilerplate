@@ -45,7 +45,12 @@ bin.put("/:id", (request, response) => {
 //delete
 bin.delete("/:id", (request, response) => {
     const id = request.params.id;
-    response.send(`bin ${id} deleted`);
+    try {
+        deleteBin(id);
+        response.send(`bin ${id} deleted`);
+    } catch(error) {
+        response.send(`bin ${id} not found`);
+    }
 });
 
 

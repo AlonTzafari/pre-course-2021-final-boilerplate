@@ -50,7 +50,7 @@ function updateBin(id, data) {
 }
 
 function deleteBin(id) {
-
+    fs.unlinkSync(`${__dirname}/database/bins/${id}.json`);
 }
 
 module.exports = {
