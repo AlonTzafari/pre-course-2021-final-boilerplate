@@ -1,6 +1,6 @@
 const API_KEY = "$2b$10$HQwOejfJc5AdOgPXf8yJvO9vLU7G6WvMojCjBiPXEdreVE0A7bM96"; // Assign this variable to your JSONBIN.io API key if you choose to use it.
 const DB_NAME = "my-todo";
-const DB_URL = "https://api.jsonbin.io/v3/b/6011dbcf9f55707f6dfcf2b7";
+const DB_URL = "http://localhost:3000/v3/b/mybin";
 
 // Gets data from persistent storage by the given key and returns it
 async function getPersistent(key) { 
