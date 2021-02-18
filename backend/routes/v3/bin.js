@@ -5,6 +5,8 @@ const {createBin, getBin, getAll, updateBin, deleteBin} = require("../../utils")
 
 const bin = express();
 
+bin.use(express.json());
+
 //get all
 bin.get("/", (request, response) => {
     const allJsons = getAll(); 
