@@ -12,10 +12,21 @@ async function getPersistent(key) {
   };
   const request = new Request(DB_URL, init);
   const loadIcon = document.querySelector("#loading");
+  const errorIcon = document.querySelector("#error");
   loadIcon.style.visibility = "visible";
-  const response = await ( await fetch(request) ).json();
-  loadIcon.style.visibility = "hidden";
-  return response.record[key];
+  errorIcon.style.visibility = "hidden";
+  let response;
+  try {
+    response = await fetch(request);
+    response = await response.json();
+    loadIcon.style.visibility = "hidden";
+    return response.record[key];
+  } catch (e) {
+    errorIcon.style.visibility = "visible";
+    loadIcon.style.visibility = "hidden";
+    console.log(response);
+    console.log(e);
+  }
 }
 
 // Saves the given data into persistent storage by the given key.
