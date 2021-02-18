@@ -12,9 +12,11 @@ async function getPersistent(key) {
   };
   const request = new Request(DB_URL, init);
   const loadIcon = document.querySelector("#loading");
-  const errorIcon = document.querySelector("#error");
+  const errorIcon = document.querySelector("#loading-error");
+  const uploadErrorIcon = document.querySelector("#upload-error");
   loadIcon.style.visibility = "visible";
   errorIcon.style.visibility = "hidden";
+  uploadErrorIcon.style.visibility = "hidden";
   let response;
   try {
     response = await fetch(request);
@@ -47,8 +49,18 @@ async function setPersistent(key, data) {
   };
   const request = new Request(DB_URL, init);
   const loadIcon = document.querySelector("#loading");
+  const uploadErrorIcon = document.querySelector("#upload-error");
+  uploadErrorIcon.style.visibility = "hidden";
   loadIcon.style.visibility = "visible";
-  const response = await fetch(request);
-  loadIcon.style.visibility = "hidden";
+  let response;
+  try {
+    response = await fetch(request);
+    loadIcon.style.visibility = "hidden";
+  } catch (e) {
+    loadIcon.style.visibility = "hidden";
+    uploadErrorIcon.style.visibility = "visible";
+    console.log(response);
+    console.log(e);
+  }
   return response.ok;
 }

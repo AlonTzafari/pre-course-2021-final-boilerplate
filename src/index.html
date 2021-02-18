@@ -11,7 +11,10 @@
   </head>
   <body>
     <main>
-      <h1>TO-DO List: <i id = "loading" class="fa fa-spin fa-refresh" aria-hidden="true"></i></h1>
+      <h1>  
+        TO-DO List: <i id = "loading" class="fa fa-spin fa-refresh" aria-hidden="true"></i>
+        <span id = "upload-error">tasks not synced</span>
+      </h1>
       <section id = "control-section">
         <div class = "adder">
           <input id = "text-input" class = "control-element inset" type = "text" placeholder="Enter task">
@@ -35,7 +38,7 @@
         </div>
       </section>
       <section id = "view-section"></section>
-      <div id = "error" >
+      <div id = "loading-error" >
         <div style = "font-size: 2000%;">🤬</div>
         <div style = "font-size: 200%;">ERROR LOADING TASKS</div>
       </div>
